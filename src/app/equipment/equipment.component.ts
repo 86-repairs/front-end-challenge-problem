@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { EquipmentServiceService } from '../equipment-service.service';
 
 @Component({
     selector: 'app-equipment',
@@ -6,6 +7,13 @@ import {Component} from '@angular/core';
     styleUrls: ['./equipment.component.css']
 })
 export class EquipmentComponent {
-    constructor() {
+    public stuff = 'This is the equipment';
+    equipment;
+    constructor(public equipmentService: EquipmentServiceService) {}
+    ngOnInit() {
+        this.equipmentService.getEquipment().subscribe((data) => {
+            this.equipment = data;
+            console.log(data)
+        })
     }
 }
