@@ -4,5 +4,14 @@
         Welcome to {{ title }}!
     </h1>
 </div>
+<nav class="navbar navbar-light bg-light" style="display: flex; justify-content: center; align-items: center;">
+    <a [routerLink]="['/']">
+        Home
+    </a>
+    &nbsp;|&nbsp;
+    <a [routerLink]="['/equipment']">
+        Equipment
+    </a>
+</nav>
 
 <router-outlet></router-outlet>

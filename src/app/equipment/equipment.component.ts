@@ -9,11 +9,12 @@ import { EquipmentServiceService } from '../equipment-service.service';
 export class EquipmentComponent {
     public stuff = 'This is the equipment';
     equipment;
+    error;
     constructor(public equipmentService: EquipmentServiceService) {}
     ngOnInit() {
-        this.equipmentService.getEquipment().subscribe((data) => {
-            this.equipment = data;
-            console.log(data)
-        })
+        this.equipmentService.getEquipment().subscribe(
+            data => this.equipment = data,
+            err => this.error = err.error.message
+        )
     }
 }

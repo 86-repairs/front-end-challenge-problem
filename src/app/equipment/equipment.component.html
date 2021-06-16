@@ -1,4 +1,18 @@
 <div class="container">
-    <h2>Equipment Component</h2>
-    <div *ngFor="let appliance of equipment">{{appliance.description}}</div>
+    <h2>Equipment</h2>
+    <div class="d-flex bd-highlight row equal">
+        <ng-template ngFor let-appliance [ngForOf]="equipment" let-i="index" [ngForTrackBy]="trackByFn">
+            <div *ngIf="appliance.active" class="card" [ngClass]="{'bg-warning' : ! appliance.equipment_type || ! appliance.manufacturer}" style="width: 18rem; margin: .5rem;">
+                <div class="card-header">
+                    <h5 class="card-title">{{appliance.description || '(untitled)'}}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Type: {{appliance.equipment_type}}</p>
+                    <p class="card-text">Model: {{appliance.model_number}}</p>
+                    <p class="card-text">SN: {{appliance.serial_number}}</p>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <div *ngIf="error">Error: {{error}}</div>
 </div>
